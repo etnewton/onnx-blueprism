@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<bpr:release xmlns:bpr="http://www.blueprism.co.uk/product/release">
+    <bpr:name>Onnx GenAI v2</bpr:name>
+    <bpr:release-notes />
+    <bpr:created>2024-11-25 23:47:47Z</bpr:created>
+    <bpr:package-id>1</bpr:package-id>
+    <bpr:package-name>Onnx GenAI</bpr:package-name>
+    <bpr:user-created-by>admin</bpr:user-created-by>
+    <bpr:contents count="4">
+        <process id="32cd21e2-925b-41dc-8ad8-6e826899f12e" name="Example LM" xmlns="http://www.blueprism.co.uk/product/process"><process name="Example LM" version="1.0" bpversion="7.3.1.11999" narrative="Example process showing using Onnx Runtime VBO" byrefcollection="true" processrunningmessage="" disableversioning="false"><view><camerax>0</camerax><cameray>0</cameray><zoom version="2">1.25</zoom></view><preconditions /><endpoint narrative="" /><subsheet subsheetid="4ca1e594-e005-4631-9bc5-97fa4637c7cd" type="Normal" published="False"><name>Prompt Example</name><view><camerax>0</camerax><cameray>84</cameray><zoom version="2">1.25</zoom></view></subsheet><subsheet subsheetid="f2c64d6e-5e23-44ec-b121-8146e8efb46b" type="Normal" published="False"><name>Prompt Example With Token Details</name><view><camerax>0</camerax><cameray>63</cameray><zoom version="2">1.25</zoom></view></subsheet><stage stageid="461fe29a-6139-4805-82f6-d76ebdf25e74" name="Start" type="Start"><display x="15" y="-90" /><onsuccess>6852c1e8-fb4d-4c00-a934-b5aedf3f1d08</onsuccess></stage><stage stageid="6852c1e8-fb4d-4c00-a934-b5aedf3f1d08" name="End" type="End"><display x="15" y="-30" /></stage><stage stageid="8bc56e60-2d92-44d8-9baa-9efa188e458e" name="Stage1" type="ProcessInfo"><display x="-195" y="-105" w="150" h="90" /></stage><stage stageid="11dd76c6-cc7d-4860-a23d-9d943569c2da" name="Prompt Example With Token Details" type="SubSheetInfo"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><display x="-240" y="-210" w="150" h="90" /></stage><stage stageid="3369134c-10eb-49f9-9ef2-1c80fa06181d" name="Start" type="Start"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><display x="15" y="-105" /><onsuccess>daa7a20c-5596-45b6-858c-99d5b2de1083</onsuccess></stage><stage stageid="755f2e4b-6c8c-4bdf-8716-e003618029a8" name="End" type="End"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><display x="15" y="210" /></stage><stage stageid="532e09bb-1486-465f-b4e3-5783fe9cd3e9" name="Prompt Collection Row" type="Action"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><loginhibit onsuccess="true" /><display x="15" y="30" w="90" h="30" /><inputs><input type="text" name="systemPrompt" friendlyname="systemPrompt" expr="[System Prompt]" /><input type="text" name="message" friendlyname="message" expr="[Prompts.Message]" /></inputs><outputs><output type="text" name="response" friendlyname="response" stage="Output" /><output type="number" name="tokenPerSecond" friendlyname="tokenPerSecond" stage="Prompts.Tokens Per Second" /><output type="number" name="totalTokens" friendlyname="totalTokens" stage="Prompts.Tokens" /></outputs><onsuccess>2885274f-cf26-4c3c-a95a-5704d7abce86</onsuccess><resource object="Onnx GenAI LM" action="Send Prompt - Token per second output" /></stage><stage stageid="b52e1f90-3b51-4ae1-a47d-0423cd2fa872" name="Close Model" type="Action"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><loginhibit onsuccess="true" /><display x="15" y="165" w="90" h="30" /><onsuccess>755f2e4b-6c8c-4bdf-8716-e003618029a8</onsuccess><resource object="Onnx GenAI LM" action="Unload Model" /></stage><stage stageid="f4b26e19-e8ff-463a-8267-bc91f1093d71" name="Model Path" type="Data"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><loginhibit onsuccess="true" /><display x="-135" y="-15" w="120" h="30" /><datatype>text</datatype><initialvalue xml:space="preserve">Path to your model</initialvalue><private /><alwaysinit /></stage><stage stageid="f491bbf1-fa2d-4f85-ae9f-ed5d824c38d6" name="Prompt Template" type="Data"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><loginhibit onsuccess="true" /><display x="-135" y="15" w="120" h="30" /><datatype>text</datatype><initialvalue xml:space="preserve">&lt;|system|&gt;
+{systemPrompt}
+&lt;|end|&gt;
+&lt;|user|&gt;
+{userPrompt}
+&lt;|end|&gt;
+&lt;|assistant|&gt;</initialvalue><private /><alwaysinit /></stage><stage stageid="daa7a20c-5596-45b6-858c-99d5b2de1083" name="Load Model" type="Action"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><loginhibit onsuccess="true" /><display x="15" y="-60" w="90" h="30" /><inputs><input type="text" name="modelPath" friendlyname="modelPath" expr="[Model Path]" /><input type="number" name="contextLength" friendlyname="contextLength" expr="2048" /><input type="text" name="promptTemplate" friendlyname="promptTemplate" expr="[Prompt Template]" /></inputs><onsuccess>830b35a6-fafc-45d8-9caa-b2753125763d</onsuccess><resource object="Onnx GenAI LM" action="Load Model" /></stage><stage stageid="830b35a6-fafc-45d8-9caa-b2753125763d" name="Loop Prompts" type="LoopStart"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><loginhibit onsuccess="true" /><display x="15" y="-15" w="90" h="30" /><onsuccess>532e09bb-1486-465f-b4e3-5783fe9cd3e9</onsuccess><groupid>e7852795-9d0a-4b68-91e8-c6ed093a3824</groupid><looptype>ForEach</looptype><loopdata>Prompts</loopdata></stage><stage stageid="ce9cf177-2c31-4811-bc83-ab82ef7c2a6c" name="Loop Prompts" type="LoopEnd"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><loginhibit onsuccess="true" /><display x="15" y="120" w="90" h="30" /><onsuccess>b52e1f90-3b51-4ae1-a47d-0423cd2fa872</onsuccess><groupid>e7852795-9d0a-4b68-91e8-c6ed093a3824</groupid></stage><stage stageid="fbc0d61f-e978-4163-9a62-6f1be4f4850b" name="Prompts" type="Collection"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><display x="165" y="105" w="150" h="30" /><datatype>collection</datatype><private /><alwaysinit /><collectioninfo><field name="Message" type="text" /><field name="Output" type="text" /><field name="Tokens" type="number" /><field name="Tokens Per Second" type="number" /></collectioninfo><initialvalue><row><field name="Message" type="text" value="123 High Street,  Flore, Northamptonshire, NN7 4LS" /><field name="Output" type="text" value="" /><field name="Tokens" type="number" value="" /><field name="Tokens Per Second" type="number" value="" /></row><row><field name="Message" type="text" value="123-456 Rue Principale,  Montréal, QC, H2Y 1Z2" /><field name="Output" type="text" value="" /><field name="Tokens" type="number" value="" /><field name="Tokens Per Second" type="number" value="" /></row><row><field name="Message" type="text" value="123  Smith  St,  Summer Hill,  NSW 2130" /><field name="Output" type="text" value="" /><field name="Tokens" type="number" value="" /><field name="Tokens Per Second" type="number" value="" /></row><row><field name="Message" type="text" value="Hauptstraße 123, 12345 Berlin" /><field name="Output" type="text" value="" /><field name="Tokens" type="number" value="" /><field name="Tokens Per Second" type="number" value="" /></row><row><field name="Message" type="text" value="123 Main Stret,  Anytown,  CA 91234" /><field name="Output" type="text" value="" /><field name="Tokens" type="number" value="" /><field name="Tokens Per Second" type="number" value="" /></row></initialvalue></stage><stage stageid="2885274f-cf26-4c3c-a95a-5704d7abce86" name="Trim Output" type="Calculation"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><loginhibit onsuccess="true" /><display x="15" y="75" w="90" h="30" /><onsuccess>ce9cf177-2c31-4811-bc83-ab82ef7c2a6c</onsuccess><calculation expression="Trim([Output])" stage="Prompts.Output" /></stage><stage stageid="f977e936-7250-42b5-b369-2fce906a5817" name="Output" type="Data"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><loginhibit onsuccess="true" /><display x="165" y="75" w="150" h="30" /><datatype>text</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="644e7476-e715-4ad7-acaa-590deaa70afb" name="System Prompt" type="Data"><subsheetid>f2c64d6e-5e23-44ec-b121-8146e8efb46b</subsheetid><loginhibit onsuccess="true" /><display x="-135" y="120" w="120" h="30" /><datatype>text</datatype><initialvalue xml:space="preserve">Provide back info in json following format {address1: "address1", city: "city", state: "abbrevated state", country: "abbreviated country"}. Ensure json is valid and only respond with json text, no other information should be in your response.</initialvalue><private /><alwaysinit /></stage><stage stageid="88b23fe8-53c6-4b1f-9835-f85d9a649090" name="Prompt Example" type="SubSheetInfo"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><display x="-195" y="-105" w="150" h="90" /></stage><stage stageid="fef37d52-0037-46dd-bcd2-dfaca638c33b" name="Start" type="Start"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><display x="15" y="-105" /><onsuccess>1e862e3b-b4a0-4e0b-99f8-8d5ad53925cb</onsuccess></stage><stage stageid="38272219-7140-48c0-8bfa-a7e407da240b" name="End" type="End"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><display x="15" y="210" /></stage><stage stageid="ff666857-dc36-427f-8061-4d639613964e" name="Prompt Collection Row" type="Action"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><loginhibit onsuccess="true" /><display x="15" y="30" w="90" h="30" /><inputs><input type="text" name="systemPrompt" friendlyname="systemPrompt" expr="[System Prompt]" /><input type="text" name="message" friendlyname="message" expr="[Prompts.Message]" /></inputs><outputs><output type="text" name="output" friendlyname="output" stage="Output" /></outputs><onsuccess>8bc01be9-8ea0-42e5-a66b-e71bf01415a8</onsuccess><resource object="Onnx GenAI LM" action="Send Prompt" /></stage><stage stageid="2c48690a-ca6d-41d9-9104-2ed04b71596c" name="Close Model" type="Action"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><loginhibit onsuccess="true" /><display x="15" y="165" w="90" h="30" /><onsuccess>38272219-7140-48c0-8bfa-a7e407da240b</onsuccess><resource object="Onnx GenAI LM" action="Unload Model" /></stage><stage stageid="10e95535-386f-44dd-970c-2a0397cf69b8" name="Model Path" type="Data"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><loginhibit onsuccess="true" /><display x="-135" y="-15" w="120" h="30" /><datatype>text</datatype><initialvalue xml:space="preserve">Path to your model</initialvalue><private /><alwaysinit /></stage><stage stageid="8b106ca1-fed7-40a1-b4da-8c62b25c14ad" name="Prompt Template" type="Data"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><loginhibit onsuccess="true" /><display x="-135" y="15" w="120" h="30" /><datatype>text</datatype><initialvalue xml:space="preserve">&lt;|system|&gt;
+{systemPrompt}
+&lt;|end|&gt;
+&lt;|user|&gt;
+{userPrompt}
+&lt;|end|&gt;
+&lt;|assistant|&gt;</initialvalue><private /><alwaysinit /></stage><stage stageid="1e862e3b-b4a0-4e0b-99f8-8d5ad53925cb" name="Load Model" type="Action"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><loginhibit onsuccess="true" /><display x="15" y="-60" w="90" h="30" /><inputs><input type="text" name="modelPath" friendlyname="modelPath" expr="[Model Path]" /><input type="number" name="contextLength" friendlyname="contextLength" expr="2048" /><input type="text" name="promptTemplate" friendlyname="promptTemplate" expr="[Prompt Template]" /></inputs><onsuccess>a388718a-4fe2-4d09-a9ab-6718710da4dc</onsuccess><resource object="Onnx GenAI LM" action="Load Model" /></stage><stage stageid="a388718a-4fe2-4d09-a9ab-6718710da4dc" name="Loop Prompts" type="LoopStart"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><loginhibit onsuccess="true" /><display x="15" y="-15" w="90" h="30" /><onsuccess>ff666857-dc36-427f-8061-4d639613964e</onsuccess><groupid>a47ae9a2-3136-40c4-97d7-da72fbc8e5b7</groupid><looptype>ForEach</looptype><loopdata>Prompts</loopdata></stage><stage stageid="e2805cb7-f185-4c0c-a5cb-897fa4d98df4" name="Loop Prompts" type="LoopEnd"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><loginhibit onsuccess="true" /><display x="15" y="120" w="90" h="30" /><onsuccess>2c48690a-ca6d-41d9-9104-2ed04b71596c</onsuccess><groupid>a47ae9a2-3136-40c4-97d7-da72fbc8e5b7</groupid></stage><stage stageid="f9bf64da-ce13-4c2c-b452-48409dff5f6f" name="Prompts" type="Collection"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><display x="165" y="105" w="150" h="30" /><datatype>collection</datatype><private /><alwaysinit /><collectioninfo><field name="Message" type="text" /><field name="Output" type="text" /></collectioninfo><initialvalue><row><field name="Message" type="text" value="123 High Street,  Flore, Northamptonshire, NN7 4LS" /><field name="Output" type="text" value="" /></row><row><field name="Message" type="text" value="123-456 Rue Principale,  Montréal, QC, H2Y 1Z2" /><field name="Output" type="text" value="" /></row><row><field name="Message" type="text" value="123  Smith  St,  Summer Hill,  NSW 2130" /><field name="Output" type="text" value="" /></row><row><field name="Message" type="text" value="Hauptstraße 123, 12345 Berlin" /><field name="Output" type="text" value="" /></row><row><field name="Message" type="text" value="123 Main Stret,  Anytown,  CA 91234" /><field name="Output" type="text" value="" /></row></initialvalue></stage><stage stageid="8bc01be9-8ea0-42e5-a66b-e71bf01415a8" name="Trim Output" type="Calculation"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><loginhibit onsuccess="true" /><display x="15" y="75" w="90" h="30" /><onsuccess>e2805cb7-f185-4c0c-a5cb-897fa4d98df4</onsuccess><calculation expression="Trim([Output])" stage="Prompts.Output" /></stage><stage stageid="d7d33d3f-8265-4868-8940-f57db792f8b4" name="Output" type="Data"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><loginhibit onsuccess="true" /><display x="165" y="75" w="150" h="30" /><datatype>text</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="891d2ab6-2cbd-43ba-8b34-d6a15471d484" name="System Prompt" type="Data"><subsheetid>4ca1e594-e005-4631-9bc5-97fa4637c7cd</subsheetid><loginhibit onsuccess="true" /><display x="-135" y="120" w="120" h="30" /><datatype>text</datatype><initialvalue xml:space="preserve">Provide back info in json following format {address1: "address1", city: "city", state: "abbrevated state", country: "abbreviated country"}. Ensure json is valid and only respond with json text, no other information should be in your response.</initialvalue><private /><alwaysinit /></stage></process></process>
+        <object id="8bcb8966-62c6-44fe-8a54-a7b951bc3dcc" name="Onnx GenAI LM" xmlns="http://www.blueprism.co.uk/product/process"><process name="Onnx GenAI LM" version="1.0" bpversion="7.3.1.11999" narrative="Onnx runtime for on resource LM." byrefcollection="true" processrunningmessage="" disableversioning="false" type="object" runmode="Background"><appdef><element name="Application Root"><id>cbe784c5-16b4-423b-b18c-8670a3be8244</id><type>Application</type><basetype>Application</basetype><datatype>unknown</datatype><diagnose>False</diagnose></element></appdef><view><camerax>-195</camerax><cameray>-21</cameray><zoom version="2">1.25</zoom></view><preconditions /><endpoint narrative="" /><subsheet subsheetid="0fe9683e-11f1-4f9d-a1ee-89ff1fb41d21" type="CleanUp" published="True"><name>Clean Up</name><view><camerax>0</camerax><cameray>0</cameray><zoom version="2">1.25</zoom></view></subsheet><subsheet subsheetid="cffcba22-5d8c-44e9-8dc1-e749f850cd42" type="Normal" published="True"><name>Load Model</name><view><camerax>0</camerax><cameray>0</cameray><zoom version="2">1.25</zoom></view></subsheet><subsheet subsheetid="aa2574b2-cdc1-498b-9d42-118a54cbc433" type="Normal" published="True"><name>Send Prompt</name><view><camerax>0</camerax><cameray>0</cameray><zoom version="2">1.25</zoom></view></subsheet><subsheet subsheetid="1ecc60c7-0e8d-4d9f-b496-4d0ac5e93f88" type="Normal" published="True"><name>Unload Model</name><view><camerax>0</camerax><cameray>0</cameray><zoom version="2">1.25</zoom></view></subsheet><subsheet subsheetid="6b72ece4-9867-48a3-9031-91d9283f5db5" type="Normal" published="True"><name>Send Prompt - Token per second output</name><view><camerax>0</camerax><cameray>0</cameray><zoom version="2">1.25</zoom></view></subsheet><stage stageid="bb6d3f74-371f-4db1-9311-799b573fd228" name="Start" type="Start"><loginhibit /><display x="15" y="-105" /><onsuccess>5d727bed-b5e7-448c-9e5c-f7e44dd57c47</onsuccess></stage><stage stageid="5d727bed-b5e7-448c-9e5c-f7e44dd57c47" name="End" type="End"><loginhibit /><display x="15" y="90" /></stage><stage stageid="515a3b66-a89c-40c0-96f8-edad423e4743" name="Stage1" type="ProcessInfo"><display x="-195" y="-105" w="150" h="90" /><references><reference>System.dll</reference><reference>System.Data.dll</reference><reference>System.Xml.dll</reference><reference>System.Drawing.dll</reference><reference>Microsoft.ML.OnnxRuntimeGenAI.dll</reference><reference>System.Memory.dll</reference><reference>netstandard.dll</reference><reference>Microsoft.ML.OnnxRuntime.dll</reference><reference>System.Core.dll</reference></references><imports><import>System</import><import>System.Drawing</import><import>System.Data</import><import>Microsoft.ML.OnnxRuntimeGenAI</import><import>System.Text</import><import>System.IO</import><import>Microsoft.ML.OnnxRuntime</import><import>System.Collections.Generic</import><import>System.Linq</import></imports><language>csharp</language><globalcode><![CDATA[]]></globalcode><code><![CDATA[public class PromptResponse {
+	
+	public string response {get; set;}
+	public decimal totalTokens {get; set;}
+	public decimal tokensPerSec {get; set;}
+	
+}
+
+
+public class Llm {
+	
+	private Model model;
+	private Tokenizer tokenizer;
+	public bool modelLoaded = false;
+	private int contextLength;
+	private string promptTemplate;
+	
+	public Llm() {
+
+	}
+	
+	public void LoadModel(string modelPath, string promptTemplate, int contextLength) {
+		this.model = new Model(modelPath);
+        this.tokenizer = new Tokenizer(model);
+		this.promptTemplate = promptTemplate;
+		this.contextLength = contextLength;
+		this.modelLoaded = true;
+	}
+	
+	public string Prompt(string message, string systemPrompt)
+		{
+
+			var fullPrompt = this.promptTemplate.Replace("{systemPrompt}",systemPrompt).Replace("{userPrompt}", message);
+			var tokens = tokenizer.Encode(fullPrompt);
+				
+
+			var generatorParams = new GeneratorParams(model);
+			generatorParams.SetSearchOption("max_length", this.contextLength);
+			generatorParams.SetSearchOption("past_present_share_buffer", false);
+			generatorParams.SetInputSequences(tokens);
+				
+			var tokenizerStream = this.tokenizer.CreateStream();
+			var generator = new Generator(this.model, generatorParams);
+			
+			StringBuilder output = new StringBuilder();
+			
+			while (!generator.IsDone())
+				{
+					generator.ComputeLogits();
+					generator.GenerateNextToken();
+					
+					var nextToken = generator.GetSequence(0).ToArray();
+					
+					output.Append(tokenizerStream.Decode(nextToken[nextToken.Length - 1]));
+				}
+				
+			return output.ToString();
+
+		}
+		
+	public PromptResponse PromptWithTokenPerSec(string message, string systemPrompt)
+		{
+
+			var fullPrompt = this.promptTemplate.Replace("{systemPrompt}",systemPrompt).Replace("{userPrompt}", message);
+			var tokens = tokenizer.Encode(fullPrompt);
+				
+
+			var generatorParams = new GeneratorParams(model);
+			generatorParams.SetSearchOption("max_length", this.contextLength);
+			generatorParams.SetSearchOption("past_present_share_buffer", false);
+			generatorParams.SetInputSequences(tokens);
+				
+			var tokenizerStream = this.tokenizer.CreateStream();
+			var generator = new Generator(this.model, generatorParams);
+			var watch = System.Diagnostics.Stopwatch.StartNew();
+			StringBuilder output = new StringBuilder();
+			
+			while (!generator.IsDone())
+				{
+					generator.ComputeLogits();
+					generator.GenerateNextToken();
+					
+					var nextToken = generator.GetSequence(0).ToArray();
+					
+					output.Append(tokenizerStream.Decode(nextToken[nextToken.Length - 1]));
+					
+				}
+			watch.Stop();
+			var runTimeInSeconds = watch.Elapsed.TotalSeconds;
+			var totalTokens = generator.GetSequence(0).Length;
+			PromptResponse promptResponse = new PromptResponse();
+			promptResponse.response = output.ToString();
+			promptResponse.totalTokens = (decimal) totalTokens;
+			promptResponse.tokensPerSec = (decimal) (totalTokens / runTimeInSeconds);
+				
+			return promptResponse;
+
+		}
+		
+		public void UnloadModel() {
+			if (this.modelLoaded) {	
+				this.model.Dispose();
+				this.tokenizer.Dispose();
+			}
+		}
+
+	
+}
+
+
+Llm llm = new Llm();
+
+
+ ]]></code></stage><stage stageid="bb525e04-01eb-413d-9b98-f6508570f0a4" name="Clean Up" type="SubSheetInfo"><subsheetid>0fe9683e-11f1-4f9d-a1ee-89ff1fb41d21</subsheetid><narrative>Make sure the model is unloaded from memory.</narrative><display x="-195" y="-105" w="150" h="90" /></stage><stage stageid="862c488b-ff0e-44ac-8195-172d6edbee4a" name="Start" type="Start"><subsheetid>0fe9683e-11f1-4f9d-a1ee-89ff1fb41d21</subsheetid><loginhibit /><display x="15" y="-105" /><onsuccess>b265f191-001e-4cc4-9830-b36c37f6a70f</onsuccess></stage><stage stageid="90ebc0aa-ea44-4ec1-9947-65169590d862" name="End" type="End"><subsheetid>0fe9683e-11f1-4f9d-a1ee-89ff1fb41d21</subsheetid><loginhibit /><display x="15" y="15" /></stage><stage stageid="96485310-6b31-492b-8313-86cadb571d4a" name="Send Prompt" type="SubSheetInfo"><subsheetid>aa2574b2-cdc1-498b-9d42-118a54cbc433</subsheetid><narrative>Input Prompts and Output LLM response</narrative><display x="-180" y="-105" w="150" h="90" /></stage><stage stageid="110b4af2-ef64-4d6e-9132-1c024e58818c" name="Start" type="Start"><subsheetid>aa2574b2-cdc1-498b-9d42-118a54cbc433</subsheetid><loginhibit /><display x="15" y="-105" /><inputs><input type="text" name="systemPrompt" stage="systemPrompt" /><input type="text" name="message" stage="message" /></inputs><onsuccess>4edbc186-e2d6-4d2f-9937-50e1131d957f</onsuccess></stage><stage stageid="425fab27-72e8-4818-aa65-77e3879627c2" name="End" type="End"><subsheetid>aa2574b2-cdc1-498b-9d42-118a54cbc433</subsheetid><loginhibit /><display x="15" y="-15" /><outputs><output type="text" name="output" stage="output" /></outputs></stage><stage stageid="92496549-b0fc-4641-b2b3-afc45bb5a0ba" name="" type="Note"><subsheetid>0fe9683e-11f1-4f9d-a1ee-89ff1fb41d21</subsheetid><narrative>Clean Up Page
+
+This is an optional page where you might choose to perform some finalisation (or "cleanup") tasks as your business object is closed down.
+
+The cleanup action will be called automatically immediately after closing your business object at the end of a business process.
+
+You will not be able to call this action from a business process, nor will it be called at any other time than before the disposal of the business object.</narrative><display x="-180" y="60" w="180" h="230" /></stage><stage stageid="e62dd306-73b5-45ad-bbaf-2390fa556d5f" name="" type="Note"><narrative>Initialise Page
+
+This is an optional page where you might choose to perform some initialisation tasks after your business object is loaded.
+
+The initialise action will be called automatically immediately after loading your business object.
+
+You will not be able to call this action from a business process, nor will it be called at any other time than after the creation of the object.</narrative><display x="-180" y="60" w="180" h="230" /></stage><stage stageid="5b77bbb4-796c-47a8-9ba9-767876f491db" name="output" type="Data"><subsheetid>aa2574b2-cdc1-498b-9d42-118a54cbc433</subsheetid><loginhibit /><display x="105" y="30" /><datatype>text</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="4edbc186-e2d6-4d2f-9937-50e1131d957f" name="Prompt" type="Code"><subsheetid>aa2574b2-cdc1-498b-9d42-118a54cbc433</subsheetid><loginhibit /><display x="15" y="-60" /><inputs><input type="text" name="message" expr="[message]" /><input type="text" name="systemPrompt" expr="[systemPrompt]" /></inputs><outputs><output type="text" name="output" stage="output" /></outputs><onsuccess>425fab27-72e8-4818-aa65-77e3879627c2</onsuccess><code><![CDATA[
+output = llm.Prompt(message, systemPrompt);
+
+]]></code></stage><stage stageid="eee5ec3d-2170-4a32-abde-e8dbcdce2f03" name="Load Model" type="SubSheetInfo"><subsheetid>cffcba22-5d8c-44e9-8dc1-e749f850cd42</subsheetid><narrative>Loads model into memory for prompts.</narrative><display x="-240" y="-165" w="150" h="90" /></stage><stage stageid="af0f8083-8f39-48a2-a77e-086ade6071b8" name="Start" type="Start"><subsheetid>cffcba22-5d8c-44e9-8dc1-e749f850cd42</subsheetid><loginhibit /><display x="15" y="-105" /><inputs><input type="text" name="modelPath" stage="modelPath" /><input type="number" name="contextLength" stage="contextLength" /><input type="text" name="promptTemplate" stage="promptTemplate" /></inputs><onsuccess>218aa0c5-bfea-4cb7-a64e-3875517846f5</onsuccess></stage><stage stageid="49ee3653-e286-45e5-b497-0c8f8181a05d" name="End" type="End"><subsheetid>cffcba22-5d8c-44e9-8dc1-e749f850cd42</subsheetid><loginhibit /><display x="15" y="15" /></stage><stage stageid="218aa0c5-bfea-4cb7-a64e-3875517846f5" name="Load Model" type="Code"><subsheetid>cffcba22-5d8c-44e9-8dc1-e749f850cd42</subsheetid><loginhibit /><display x="15" y="-45" /><inputs><input type="text" name="modelPath" expr="[modelPath]" /><input type="text" name="promptTemplate" expr="[promptTemplate]" /><input type="number" name="contextLength" expr="[contextLength]" /></inputs><onsuccess>49ee3653-e286-45e5-b497-0c8f8181a05d</onsuccess><code><![CDATA[llm.LoadModel(modelPath, promptTemplate, (int)contextLength);]]></code></stage><stage stageid="6a5d19a0-98dc-48ed-88df-fbb8080b8699" name="modelPath" type="Data"><subsheetid>cffcba22-5d8c-44e9-8dc1-e749f850cd42</subsheetid><display x="105" y="-105" w="90" h="30" /><datatype>text</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="ef3e2164-eae2-465a-ab87-d4470c2e1de9" name="Unload Model" type="SubSheetInfo"><subsheetid>1ecc60c7-0e8d-4d9f-b496-4d0ac5e93f88</subsheetid><narrative>Closes the model, removing from memory</narrative><display x="-195" y="-105" w="150" h="90" /></stage><stage stageid="a3798a38-55bb-46a6-bd21-96914c8c1b9d" name="Start" type="Start"><subsheetid>1ecc60c7-0e8d-4d9f-b496-4d0ac5e93f88</subsheetid><loginhibit /><display x="15" y="-105" /><onsuccess>34b429a6-0ff2-4721-97f3-319a7accbb3b</onsuccess></stage><stage stageid="3626d11a-cc99-4c74-b319-5c13064dc3b9" name="End" type="End"><subsheetid>1ecc60c7-0e8d-4d9f-b496-4d0ac5e93f88</subsheetid><loginhibit /><display x="15" y="15" /></stage><stage stageid="34b429a6-0ff2-4721-97f3-319a7accbb3b" name="Unload Model" type="Code"><subsheetid>1ecc60c7-0e8d-4d9f-b496-4d0ac5e93f88</subsheetid><loginhibit /><display x="15" y="-45" /><onsuccess>3626d11a-cc99-4c74-b319-5c13064dc3b9</onsuccess><code><![CDATA[llm.UnloadModel();]]></code></stage><stage stageid="3813e941-0fd0-4a4d-b1d6-574d91549dcf" name="message" type="Data"><subsheetid>aa2574b2-cdc1-498b-9d42-118a54cbc433</subsheetid><display x="105" y="-90" /><datatype>text</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="abe83f4a-b03e-45f0-8a2c-d037dcefe111" name="systemPrompt" type="Data"><subsheetid>aa2574b2-cdc1-498b-9d42-118a54cbc433</subsheetid><display x="105" y="-120" /><datatype>text</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="0c7fe324-4eeb-4453-a888-0e6d3fe77052" name="promptTemplate" type="Data"><subsheetid>cffcba22-5d8c-44e9-8dc1-e749f850cd42</subsheetid><display x="-75" y="-90" w="90" h="30" /><datatype>text</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="de40f7fb-546f-42cd-a21a-ea905776f40b" name="contextLength" type="Data"><subsheetid>cffcba22-5d8c-44e9-8dc1-e749f850cd42</subsheetid><display x="-75" y="-120" w="90" h="30" /><datatype>number</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="2789e2e2-9159-430d-8a1e-60c7cc401cd6" name="Send Prompt - Token per second output" type="SubSheetInfo"><subsheetid>6b72ece4-9867-48a3-9031-91d9283f5db5</subsheetid><narrative>Input Prompts and Output LLM response</narrative><display x="-180" y="-105" w="150" h="90" /></stage><stage stageid="d9b1c0ce-ee73-40c3-8a58-64960840dade" name="Start" type="Start"><subsheetid>6b72ece4-9867-48a3-9031-91d9283f5db5</subsheetid><loginhibit /><display x="15" y="-105" /><inputs><input type="text" name="systemPrompt" stage="systemPrompt" /><input type="text" name="message" stage="message" /></inputs><onsuccess>23c68361-57cf-4b5e-9613-501bfce4ea60</onsuccess></stage><stage stageid="b4c24dea-fbbf-43f5-8cfe-ff0c4501eb76" name="End" type="End"><subsheetid>6b72ece4-9867-48a3-9031-91d9283f5db5</subsheetid><loginhibit /><display x="15" y="-15" /><outputs><output type="text" name="response" stage="response" /><output type="number" name="tokenPerSecond" stage="tokensPerSecond" /><output type="number" name="totalTokens" stage="totalTokens" /></outputs></stage><stage stageid="23c68361-57cf-4b5e-9613-501bfce4ea60" name="Prompt - output details" type="Code"><subsheetid>6b72ece4-9867-48a3-9031-91d9283f5db5</subsheetid><loginhibit /><display x="15" y="-60" /><inputs><input type="text" name="message" expr="[message]" /><input type="text" name="systemPrompt" expr="[systemPrompt]" /></inputs><outputs><output type="text" name="response" stage="response" /><output type="number" name="totalTokens" stage="totalTokens" /><output type="number" name="tokensPerSecond" stage="tokensPerSecond" /></outputs><onsuccess>b4c24dea-fbbf-43f5-8cfe-ff0c4501eb76</onsuccess><code><![CDATA[
+PromptResponse modelOutput = llm.PromptWithTokenPerSec(message, systemPrompt);
+
+
+response = modelOutput.response;
+totalTokens = modelOutput.totalTokens;
+tokensPerSecond = modelOutput.tokensPerSec;
+
+]]></code></stage><stage stageid="20b7d6ce-1950-4971-b1de-8f57d83b0b09" name="message" type="Data"><subsheetid>6b72ece4-9867-48a3-9031-91d9283f5db5</subsheetid><display x="90" y="-90" /><datatype>text</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="e0b14053-3c33-498d-a411-685a1832dc09" name="systemPrompt" type="Data"><subsheetid>6b72ece4-9867-48a3-9031-91d9283f5db5</subsheetid><display x="90" y="-120" /><datatype>text</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="b7589694-2fe8-43b0-afe5-ac376498d56c" name="totalTokens" type="Data"><subsheetid>6b72ece4-9867-48a3-9031-91d9283f5db5</subsheetid><display x="105" y="15" /><datatype>number</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="9786c803-39a2-428f-8308-a55f5d03fd75" name="tokensPerSecond" type="Data"><subsheetid>6b72ece4-9867-48a3-9031-91d9283f5db5</subsheetid><display x="105" y="45" /><datatype>number</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="a1ea9f35-8e18-4856-8b76-425dc7968ecf" name="response" type="Data"><subsheetid>6b72ece4-9867-48a3-9031-91d9283f5db5</subsheetid><display x="105" y="-15" /><datatype>text</datatype><initialvalue /><private /><alwaysinit /></stage><stage stageid="b265f191-001e-4cc4-9830-b36c37f6a70f" name="Unload Model" type="SubSheet"><subsheetid>0fe9683e-11f1-4f9d-a1ee-89ff1fb41d21</subsheetid><loginhibit /><display x="15" y="-30" /><onsuccess>90ebc0aa-ea44-4ec1-9947-65169590d862</onsuccess><processid>1ecc60c7-0e8d-4d9f-b496-4d0ac5e93f88</processid></stage></process></object>
+        <process-group id="2397a091-b855-488d-82c8-340c8fea68c0" name="Default" isDefaultGroup="True" xmlns="http://www.blueprism.co.uk/product/process-group">
+            <members>
+                <process id="32cd21e2-925b-41dc-8ad8-6e826899f12e" />
+            </members>
+        </process-group>
+        <object-group id="5fcd6cd3-e25b-4d48-88fe-f59f0d0a26d4" name="Default" isDefaultGroup="True" xmlns="http://www.blueprism.co.uk/product/object-group">
+            <members>
+                <object id="8bcb8966-62c6-44fe-8a54-a7b951bc3dcc" />
+            </members>
+        </object-group>
+    </bpr:contents>
+</bpr:release>
