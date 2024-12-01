@@ -3,7 +3,7 @@ Blue Prism v7.3.1 Learning edition on desktop
 dll Packages required in the Autofolder. I used 1.19.2 for the OnnxRuntime and 0.4.0 for GenAI packages
 However did test with the new versions of 1.20.1 and 0.5.2 and they did work but did have some odd behavior with Phi model not completing so would suggest using the versions mentioned below.
 
-<ul>x64 Runtimes</ul>
+<ins>x64 Runtimes</ins>
 Microsoft.ML.OnnxRuntime.DirectML version 1.19.2 - 
 https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime.DirectML
 onnxruntime.dll
