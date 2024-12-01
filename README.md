@@ -108,3 +108,5 @@ It is important on the template to include the line breaks as this is how the mo
 Then you can run the example which looks to output 5 rows of data that is non-formatted addresses into a requested json format. If everything was done successfully you should then be able to view the Prompts collection and see the output generated. Here is an example using Phi3 Mini 128k
 
 ![image](https://github.com/user-attachments/assets/ff6338ca-c4ff-4f32-861c-ed74bc422ee6)
+
+As you can see with my tests I was achieving roughly 20 tokens per second with Phi3, all from inference running on the CPU.
