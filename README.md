@@ -6,7 +6,7 @@ The system this was tested on was a Windows 11 Pro Desktop with Blue Prism v7.3.
 
 Set Up -
 
-1. Have Blue Prism installed on resource.
+#1. Have Blue Prism installed on resource.
 
 2. Download the required packages and move the dll to the Blue Prism Automate Folder. I used NuGet Package Manager to download the packages then found the appropriate dll in the build or runtime folder noted below and moved over. These are typically saved to YourUserPath\.nuget\packages\ then the package requested. To get the correct dll if the package has a runtime folder under the version navigate to the x64 folder in runtime folder then pull that dll, if no runtime folder is there go into the lib folder and look for the netstandard2.0 folder and take the dll from there.
 
