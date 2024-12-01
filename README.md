@@ -17,11 +17,15 @@ Set Up -
 ![image](https://github.com/user-attachments/assets/f6547adf-aa0e-4d31-8612-1f29f947602b)
 
 Microsoft.ML.OnnxRuntime.DirectML version 1.19.2
+
 https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime.DirectML
+
 onnxruntime.dll
 
 Microsoft.ML.OnnxRuntimeGenAI version 0.4.0
+
 https://www.nuget.org/packages/Microsoft.ML.OnnxRuntimeGenAI
+
 onnxruntime-genai.dll
 
 <ins>netstandard2.0 lib .dll</ins>
@@ -30,19 +34,27 @@ onnxruntime-genai.dll
 ![image](https://github.com/user-attachments/assets/231156ee-8138-4620-9901-6f87ea47c5c9)
 
 Microsoft.ML.OnnxRuntime.Managed version 1.19.2
+
 https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime.Managed
+
 Microsoft.ML.OnnxRuntime.dll
 
 Microsoft.ML.OnnxRuntimeGenAI.Managed version 0.4.0
+
 https://www.nuget.org/packages/Microsoft.ML.OnnxRuntimeGenAI.Managed
+
 Microsoft.ML.OnnxRuntimeGenAI.Managed.dll
 
 Microsoft.ML.OnnxTransformer version 3.0.1
+
 https://www.nuget.org/packages/Microsoft.ML.OnnxTransformer
+
 Microsoft.ML.OnnxTransformer.dll
 
 System.Memory version 4.5.5
+
 https://www.nuget.org/packages/System.Memory
+
 System.Memory.dll (note I override the existing dll in the Blue Prism Automate folder be sure to test before doing this blindly)
 
 Additionally make sure netstandard.dll is in the same folder.
