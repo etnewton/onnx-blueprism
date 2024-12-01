@@ -88,14 +88,13 @@ Update Model Path data item to the folder path where all the files are placed fo
 Update the Prompt Template data item to be the prompt template of the model, I already set this with the Phi template so if you are using that model don't need to update anything. Where the system prompt is to be place in the prompt place "{systemPrompt}" and where the user prompt be place but "{userPrompt}", you will pass the actual system and user prompts you want on the Send Prompt actions and it will replace those with the actual prompt when running.
 So an example would be the Phi template is - 
 
-"<|system|>
+<|system|>
 {systemPrompt}
 <|end|>
 <|user|>
 {userPrompt}
 <|end|>
 <|assistant|>
-"
 
 It is important on the template to include the line breaks as this is how the models were trained and in order to get accruate output this needs to match the right template. If you are getting weird output from a prompt then you should check if your template is correct.
 
