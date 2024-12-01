@@ -89,12 +89,19 @@ Update the Prompt Template data item to be the prompt template of the model, I a
 So an example would be the Phi template is - 
 
 <|system|>
+
 {systemPrompt}
+
 <|end|>
+
 <|user|>
+
 {userPrompt}
+
 <|end|>
+
 <|assistant|>
+
 
 It is important on the template to include the line breaks as this is how the models were trained and in order to get accruate output this needs to match the right template. If you are getting weird output from a prompt then you should check if your template is correct.
 
