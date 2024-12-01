@@ -6,9 +6,9 @@ The system this was tested on was a Windows 11 Pro Desktop with Blue Prism v7.3.
 
 Set Up -
 
-#1. Have Blue Prism installed on resource.
+# 1. Have Blue Prism installed on resource.
 
-2. Download the required packages and move the dll to the Blue Prism Automate Folder. I used NuGet Package Manager to download the packages then found the appropriate dll in the build or runtime folder noted below and moved over. These are typically saved to YourUserPath\.nuget\packages\ then the package requested. To get the correct dll if the package has a runtime folder under the version navigate to the x64 folder in runtime folder then pull that dll, if no runtime folder is there go into the lib folder and look for the netstandard2.0 folder and take the dll from there.
+# 2. Download the required packages and move the dll to the Blue Prism Automate Folder. I used NuGet Package Manager to download the packages then found the appropriate dll in the build or runtime folder noted below and moved over. These are typically saved to YourUserPath\.nuget\packages\ then the package requested. To get the correct dll if the package has a runtime folder under the version navigate to the x64 folder in runtime folder then pull that dll, if no runtime folder is there go into the lib folder and look for the netstandard2.0 folder and take the dll from there.
 
 <ins>x64 Runtimes .dll</ins>
 
@@ -59,9 +59,9 @@ System.Memory.dll (note I override the existing dll in the Blue Prism Automate f
 
 Additionally make sure netstandard.dll is in the same folder.
 
-3. Download and import the Onnx GenAI.bprelease into Blue Prism provided here - https://github.com/etnewton/onnx-blueprism/tree/main
+# 3. Download and import the Onnx GenAI.bprelease into Blue Prism provided here - https://github.com/etnewton/onnx-blueprism/tree/main
 
-4. Download a text model from huggingface with the ONNX template. Make sure you download the files related to cpu, typically they are in a folder labeled cpu_int4_rtn-block-32 or similar (example for Phi3 mini https://huggingface.co/microsoft/Phi-3-mini-128k-instruct-onnx/tree/main/cpu_and_mobile/cpu-int4-rtn-block-32-acc-level-4).
+# 4. Download a text model from huggingface with the ONNX template. Make sure you download the files related to cpu, typically they are in a folder labeled cpu_int4_rtn-block-32 or similar (example for Phi3 mini https://huggingface.co/microsoft/Phi-3-mini-128k-instruct-onnx/tree/main/cpu_and_mobile/cpu-int4-rtn-block-32-acc-level-4).
 
 I successfully used the following models - 
 
@@ -79,7 +79,9 @@ sometimes you need to rename the config and tokenizer/token file names to remove
 
 While you are looking at the models be sure to look up the prompt template since you need to provide that in the action to load the model and so they work correctly.
 
-Once you have this set up you are ready to test so you can fire up Blue Prism, log in and open up the Example LM process. Navigate to the Prompt Example With Token Details page. Then to run the example you need to do the following -
+# 5. Once you have this set up you are ready to test
+
+So you can fire up Blue Prism, log in and open up the Example LM process. Navigate to the Prompt Example With Token Details page. Then to run the example you need to do the following -
 
 Update Model Path data item to the folder path where all the files are placed for the model you downloaded, example D:\LLM\onnx\Llama-3.2-3B-Instruct-ONNX.
 
