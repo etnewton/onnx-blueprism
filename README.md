@@ -8,9 +8,12 @@ Set Up -
 
 1. Have Blue Prism installed on resource.
 
-2. Download the required packages and move the dll to the Blue Prism Automate Folder. I used NuGet Package Manager to download the packages then found the appropriate dll in the build or runtime folder noted below and moved over.
+2. Download the required packages and move the dll to the Blue Prism Automate Folder. I used NuGet Package Manager to download the packages then found the appropriate dll in the build or runtime folder noted below and moved over. These are typically saved to YourUserPath\.nuget\packages\ then the package requested. To get the correct dll if the package has a runtime folder under the version navigate to the x64 folder in runtime folder then pull that dll, if no runtime folder is there go into the lib folder and look for the netstandard2.0 folder and take the dll from there.
 
 <ins>x64 Runtimes .dll</ins>
+![image](https://github.com/user-attachments/assets/245f48ce-a3e9-4cc6-99c7-ebdd90d45e92)
+![image](https://github.com/user-attachments/assets/daf5e2fc-eff9-4e20-afca-d8542f901a14)
+![image](https://github.com/user-attachments/assets/f6547adf-aa0e-4d31-8612-1f29f947602b)
 
 Microsoft.ML.OnnxRuntime.DirectML version 1.19.2
 https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime.DirectML
@@ -20,7 +23,9 @@ Microsoft.ML.OnnxRuntimeGenAI version 0.4.0
 https://www.nuget.org/packages/Microsoft.ML.OnnxRuntimeGenAI
 onnxruntime-genai.dll
 
-<ins>netstandard2.0 build .dll</ins>
+<ins>netstandard2.0 lib .dll</ins>
+![image](https://github.com/user-attachments/assets/0753432e-3dcd-4a54-a967-a6e71693ba1c)
+![image](https://github.com/user-attachments/assets/231156ee-8138-4620-9901-6f87ea47c5c9)
 
 Microsoft.ML.OnnxRuntime.Managed version 1.19.2
 https://www.nuget.org/packages/Microsoft.ML.OnnxRuntime.Managed
