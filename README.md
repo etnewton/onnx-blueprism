@@ -69,11 +69,11 @@ Additionally make sure netstandard.dll is in the same folder.
 
 I successfully used the following models - 
 
-[Phi 3 Mini 128K Instruct](https://huggingface.co/microsoft/Phi-3-mini-128k-instruct-onnx)
+[Phi 3 Mini 128K Instruct](https://huggingface.co/microsoft/Phi-3-mini-128k-instruct-onnx) - Takes roughly 3 GB of RAM and ran in my tests around ~20 token/sec
 
-[Llama 3.2 3B Instruct](https://huggingface.co/onnx-community/Llama-3.2-3B-Instruct-ONNX)
+[Llama 3.2 3B Instruct](https://huggingface.co/onnx-community/Llama-3.2-3B-Instruct-ONNX) - Takes roughly 3 GB of RAM and ran in my tests around ~60 token/sec
 
-[Llama 3.1 8B Instruct](https://huggingface.co/llmware/llama-3.1-instruct-onnx)
+[Llama 3.1 8B Instruct](https://huggingface.co/llmware/llama-3.1-instruct-onnx) - Takes roughly 5 GB of RAM and ran in my tests around ~10 token/sec
 
 The files should be saved in a single folder and they should look something like this - 
 
