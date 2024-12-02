@@ -65,7 +65,9 @@ Additionally make sure netstandard.dll is in the same folder.
 
 ### 3. Download and import the Onnx GenAI.bprelease into Blue Prism provided here - https://github.com/etnewton/onnx-blueprism/tree/main
 
-### 4. Download a text model from huggingface with the ONNX template. Make sure you download the files related to cpu, typically they are in a folder labeled cpu_int4_rtn-block-32 or similar (example for Phi3 mini https://huggingface.co/microsoft/Phi-3-mini-128k-instruct-onnx/tree/main/cpu_and_mobile/cpu-int4-rtn-block-32-acc-level-4).
+### 4. Download a text model from huggingface with the ONNX template. 
+
+Make sure you download the files related to cpu, typically they are in a folder labeled cpu_int4_rtn-block-32 or similar (example for Phi3 mini https://huggingface.co/microsoft/Phi-3-mini-128k-instruct-onnx/tree/main/cpu_and_mobile/cpu-int4-rtn-block-32-acc-level-4).
 
 I successfully used the following models - 
 
